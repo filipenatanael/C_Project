@@ -5,7 +5,7 @@ int main(){
     bool x = false;
     int i=0;
     char nome[50];
-    printf("Digite seu nome");
+    printf("Digite seu nome: ");
     gets(nome);
     
     while(!x){
