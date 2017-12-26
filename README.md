@@ -8,4 +8,4 @@ In subfolders in this directory you will find the my homeworks write in C Progra
 Some of the algorithms developed:
 
 * [Strings Samples Manipulation] - Some example of how we can handle strings
-* [Trabalho_Registro] - Working with data registry
+* [Struct Exercises 1] - C Structure with examples
