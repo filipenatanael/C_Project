@@ -9,3 +9,5 @@ Some of the algorithms developed:
 
 * [Strings Samples Manipulation] - Some example of how we can handle strings
 * [Struct Exercises 1] - C Structure with examples
+* [FIle Manipulation] - Using C Language to manipulate files
+

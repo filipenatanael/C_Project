@@ -71,6 +71,7 @@ int main(void){
  system("pause");
  return 0;
  }
+ 
  char FuncaoInserir(char INSTRs[TMXS]){
      /*
     INSTRs - Paramentro Inserir Argumentos;
@@ -90,13 +91,7 @@ int main(void){
         }
       return 0;
       }
-      //===========================================
-    //  char FuncaoPesquiar(char FPSTRs[TMXS]){
-      //FILE *Arquivo = fopen("C:\\Users\\Filipe\\Desktop\\Estudando\\testes.txt","r");
-      
-     // printf();
-
-      //}      
+  
      //============================================ 
      char FuncaoImprimir(char IMPSTRs[TMXS]){
             /*
@@ -110,32 +105,3 @@ int main(void){
             printf("\n\n");
             return 0;
             }
-            
-            
-            
-            
-            
-            
-            /*
-            char FuncaoMenu(char LTs){
-                 char LTr;
-                 LTr = LTs;
-                 printf("[A] - Inserir\n");
-                 printf("[B] - Pesquisar\n");
-                 printf("[C] - Imprimir\n");
-                 printf("[D] - Finalizar\n");
-                 printf("\n\nInforme Opcao: ");
-                 scanf("%c",&LTr);
-                 return LTr;
-                 }
-            
-            - Complemento:
-                          
-                char FuncaoMenu(char LTs);
-                FuncaoMenu(OPC);              
-            
-            
-            */
-            
-            
-          
