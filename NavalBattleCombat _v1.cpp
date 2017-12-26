@@ -9,12 +9,6 @@ void menu();
 char tab1[10][10];
 char tab2[10][10];
    
-   /*
-   printf("\n\n(A)Battleship");
-   printf("\n(B)Submarine");
-   printf("\n(C)Minesweeper");
-   */
-  
   for(int x=0; x<10; x++){
         for(int y=0; y<10; y++){
         tab1[x][y]='~'; 
@@ -22,7 +16,6 @@ char tab2[10][10];
         }
      }
      
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
    int LINHA,COLUNA,POSICAO;
    char TIPONAVIO;
@@ -58,7 +51,6 @@ char tab2[10][10];
             scanf("%i",&LINHA);
             printf("\nCOLUNA:"); 
             scanf("%i",&COLUNA);
-			//LINHA ++;	
             }
    
    }
@@ -94,8 +86,7 @@ char tab2[10][10];
             printf("\nLINHA:");
             scanf("%i",&LINHA);
             printf("\nCOLUNA:"); 
-            scanf("%i",&COLUNA);
-			//COLUNA ++;	
+            scanf("%i",&COLUNA);	
             }
    
    }
@@ -120,12 +111,11 @@ char tab2[10][10];
 			break;
 		}
    break;
-   }//FINAL DO SWITCH
+   }
    
    system("cls");
    }
-   
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
  printf("\n\n");
    for(int x=0; x<10; x++){
@@ -142,8 +132,6 @@ POSICAO = 0;
 
 printf("\n\nIniciando Jogo...");
 system("TIMEOUT /T 5");
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   for(int x=0; x<10; x++){
       for(int y=0; y<10; y++){
@@ -170,9 +158,6 @@ system("TIMEOUT /T 5");
    }
    
 }
-
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
    printf("\n\n");
    

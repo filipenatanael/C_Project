@@ -5,10 +5,6 @@
 static const int Maximo = 10;
 static const int Controle = 100;
 
-//void Inicializando(char *GameBoard);
-//void Imprimindo(char Table[Maximo][Maximo]);
-
-
 int main(){
   
   char Tabuleiro1[10][10];
@@ -30,15 +26,6 @@ int main(){
 	 } 
     printf("\n\n");
  
-  /*
-  char Tabuleiro2[Maximo][Maximo];
-  Inicializando((char*)Tabuleiro1);
-  Imprimindo(Tabuleiro1);
-  
-  */
-
-
-
 }
 
 //---------------------------------
