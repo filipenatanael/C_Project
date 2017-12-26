@@ -11,12 +11,10 @@ typedef struct Contato {
 	int idade;
 };
 
-///////////////////////////////////////////////////////////////////////
-
-
-//Pesquisa o contato no arquivo pelo nome e retorna TRUE se for encontrado; retorna tambem o CONTATO_PESQUISADO e a POSICAO dele no arquivo
-//Note que CONTATO_PESQUISADO e POSICAO estao sendo passados por referencia
-
+/*
+Pesquisa o contato no arquivo pelo nome e retorna TRUE se for encontrado; retorna tambem o CONTATO_PESQUISADO e a POSICAO dele no arquivo
+Note que CONTATO_PESQUISADO e POSICAO estao sendo passados por referencia
+*/
 bool pesquisar_registro(char nome[50], Contato* contato_pesquisado, fpos_t* posicao) {
 	Contato contato_pesquisa;
 	
@@ -26,16 +24,18 @@ bool pesquisar_registro(char nome[50], Contato* contato_pesquisado, fpos_t* posi
 		exit(1);
 	}
 	
-	//Pega a posicao atual da stream de dados e armazena em POSICAO
-	//Lê o primeiro contato do arquivo e arzamena em CONTATO_PESQUISA
+	/* Pega a posicao atual da stream de dados e armazena em POSICAO
+	Lê o primeiro contato do arquivo e arzamena em CONTATO_PESQUISA */
 	fgetpos(arquivo, posicao);
 	fread(&contato_pesquisa, sizeof(Contato), 1, arquivo);
 	
 	//Loop que vai executando enquanto nao chegar no fim do arquivo
 	while(!feof(arquivo)) {
-		//Como estamos comparando os nomes, se o nome de CONTATO_PESQUISA for igual ao NOME, 
-		//CONTATO_PESQUISADO recebe o CONTATO_PESQUISA, fecha o arquivo e retorna TRUE
-		//Usei STRCMPI para comparar nao importanto letras maiusculas e minusculas
+		
+		/* Como estamos comparando os nomes, se o nome de CONTATO_PESQUISA for igual ao NOME, 
+		CONTATO_PESQUISADO recebe o CONTATO_PESQUISA, fecha o arquivo e retorna TRUE
+		Usei STRCMPI para comparar nao importanto letras maiusculas e minusculas */
+		
 		if (strcmpi(contato_pesquisa.nome, nome) == 0) {
 			*contato_pesquisado = contato_pesquisa;
 			fclose(arquivo);
@@ -47,26 +47,23 @@ bool pesquisar_registro(char nome[50], Contato* contato_pesquisado, fpos_t* posi
 		fread(&contato_pesquisa, sizeof(Contato), 1, arquivo);
 	}
 	
-	//Se chegou neste ponto, eh pq nao foi encontrado nenhum contato com o nome equivalente
-	//Entao fechamos o arquivo e retornamos FALSE
+	/* Se chegou neste ponto, eh pq nao foi encontrado nenhum contato com o nome equivalente
+	Entao fechamos o arquivo e retornamos FALSE */
 	fclose(arquivo);
 	
 	return false;
 }
 
 
-//////////////////////////////////////////////////////////////////////////
-
-
-
 //Insere o contato no arquivo
-                      //Registro contato;
+
 bool inserir_registro(Contato contato) {
 	Contato contato_aux; //CONTATO_AUX e POSICAO_AUX serao usados apenas para armazenar os valores vindo da funcao PESQUISAR_REGISTRO
 	fpos_t posicao_aux; //Para armazenar a posicao atual da stream de dados no arquivo, usamos o tipo FPOS_T
 	
-	//Estamos assumindo que nao deve possuir dois contatos com mesmo nome no arquivo,
-	//entao precisamos verificar primeiro se o nome deste contato ja existe nos contatos do arquivo
+	/* Estamos assumindo que nao deve possuir dois contatos com mesmo nome no arquivo,
+	entao precisamos verificar primeiro se o nome deste contato ja existe nos contatos do arquivo */
+	
 	if (pesquisar_registro(contato.nome, &contato_aux, &posicao_aux)) {
 		//Se ja existir um contato com o mesmo nome, retorna FALSE
 		return false;
@@ -78,23 +75,25 @@ bool inserir_registro(Contato contato) {
 		exit(1);
 	}
 	
-	//Se chegou neste ponto, eh pq nao foi encontrado nenhum contato com o mesmo nome,
-	//entao escrevemos o contato no arquivo, fechamos e retornamos TRUE
+	/* Se chegou neste ponto, eh pq nao foi encontrado nenhum contato com o mesmo nome,
+	entao escrevemos o contato no arquivo, fechamos e retornamos TRUE */
+	
 	fwrite(&contato, sizeof(Contato), 1, arquivo);
 	fclose(arquivo);
 	
 	return true;
 }
 
-/////////////////////////////////////////////////////////////////////////////
 
 //Procura o contato no arquivo e, caso encontre, substitui ele pelo outro contato passado por parametro
+
 bool alterar_registro(char nome[50], Contato contato) {
 	Contato contato_pesquisado, contato_aux;
 	fpos_t posicao, posicao_aux;
 	
-	//Precisamos verificar se existe um contato com este nome para que possamos alterar o registro dele
-	//Verifica tambem se existe um contato com este nome E se este contato eh diferente do nome que iremos alterar. Se for, retorna FALSE
+	/* Precisamos verificar se existe um contato com este nome para que possamos alterar o registro dele
+	Verifica tambem se existe um contato com este nome E se este contato eh diferente do nome que iremos alterar. Se for, retorna FALSE */
+	
 	if(!pesquisar_registro(nome, &contato_pesquisado, &posicao)) {
 		//Se nao existir um contato com o mesmo nome, retorna FALSE
 		return false;
@@ -108,8 +107,9 @@ bool alterar_registro(char nome[50], Contato contato) {
 		exit(1);
 	}
 	
-	//Posiciona o "cursor" do stream de dados para a posicao que se encontra o contato que queremos alterar
-	//Inserimos o novo contato por cima do contato antigo, alterando os dados
+	/* Posiciona o "cursor" do stream de dados para a posicao que se encontra o contato que queremos alterar
+	Inserimos o novo contato por cima do contato antigo, alterando os dados */
+	
 	fseek(arquivo, posicao, SEEK_SET);
 	fwrite(&contato, sizeof(Contato), 1, arquivo);
 	
@@ -124,12 +124,10 @@ bool alterar_registro(char nome[50], Contato contato) {
 	return true;
 }
 
+/* Procura o contato no arquivo e, caso encontre, exclui ele
+Nao existe funcao para excluir dados, entao uma das formas eh transferir os dados do arquivo (exceto o registro que vc quer excluir) para 
+outro arquivo temporario, deletar o atual e renomear o temporario para o nome do deletado */
 
-////////////////////////////////////////////////////////////////////////
-
-//Procura o contato no arquivo e, caso encontre, exclui ele
-//Nao existe funcao para excluir dados, entao uma das formas eh transferir os dados do arquivo (exceto o registro que vc quer excluir) para
-//outro arquivo temporario, deletar o atual e renomear o temporario para o nome do deletado
 bool excluir_registro(char nome[50]) {
 	Contato contato_pesquisa, contato_aux;
 	fpos_t posicao;
@@ -158,8 +156,7 @@ bool excluir_registro(char nome[50]) {
 	
 	//Loop que vai executando enquanto nao chegar no fim do arquivo
 	while(!feof(arquivo)) {
-		//Como estamos transferindo os dados exceto o registro que queremos excluir, o IF so vai executar
-		//se o nome NAO corresponder ao que queremos excluir
+		//Como estamos transferindo os dados exceto o registro que queremos excluir, o IF so vai executar se o nome NAO corresponder ao que queremos excluir
 		if (strcmpi(contato_pesquisa.nome, nome) != 0) {
 			//Escreve o contato no arquivo temporario
 			fwrite(&contato_pesquisa, sizeof(Contato), 1, temp);
@@ -184,17 +181,14 @@ bool excluir_registro(char nome[50]) {
 	return true;
 }
 
-//////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-
 int main() {
 	char nome[50];
 	Contato contato, contato_pesquisado;
 	int opcao;
 	fpos_t posicao_aux;
 	
-	//Caso nao existe nenhum arquivo, criará um para a manipulacao de dados
-	//Caso ja exista, so abre o arquivo e fecha em seguida
+	/* Caso nao existe nenhum arquivo, criará um para a manipulacao de dados
+	Caso ja exista, so abre o arquivo e fecha em seguida */
 	if ((arquivo = fopen("arquivo4.dat", "ab")) == NULL) {
 		printf("Erro ao abrir arquivo!");
 		exit(1);
