@@ -15,7 +15,7 @@ Some of the algorithms developed:
 * [Stacks, Files and Chain Lists](https://github.com/filipenatanael/C_Project/tree/master/Trabalho_Listas_Pilhas_Filas) - working with Stacks, Files and Chain Lists
 
 
-### College project - [Extra Class]
+### [Extra Class Project]
 
 * [Naval Battle Combat](https://github.com/filipenatanael/C_Project/blob/master/NavalBattleCombat%20_v1.cpp) - Building a naval battle for 2 players
 * [Telephone directory v3 Oficial](https://github.com/filipenatanael/C_Project/blob/master/TelephoneDirectory_v3_Oficial.cpp) - Creating a Telephone directory using using Struct, Linked lists techniques.
