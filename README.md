@@ -17,5 +17,4 @@ Some of the algorithms developed:
 ### College project - [Extra Class]
 
 * [Naval Battle Combat] - Building a naval battle for 2 players
-
-
+* [Telephone directory v3 Oficial] - Creating a Telephone directory using using Struct, Linked lists techniques.

@@ -1,7 +1,8 @@
-//https://www.youtube.com/watch?v=uFJwI45Ktbg
-//https://www.youtube.com/watch?v=Mb9AQdPGeJI
-//https://www.youtube.com/watch?v=dkQt7OrzFlg
-//https://www.youtube.com/watch?v=6m7MsOxAyGQ
+/* 
+# Discipline: Programação e Estrutura de Dados
+# Author: Filipe Natanael de Morais Gomes
+# Date: 23/11/2014
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -70,7 +71,6 @@ void RemovendoDados(int R_Elemento){
                printf("O Elemento %d Foi Removido.",R_Elemento); 
                DeadPool->Proximo = Auxiliar->Proximo;
                FlaG = 1;
-               //Auxiliar = NULL;
                break;
                }
                else
@@ -82,9 +82,6 @@ void RemovendoDados(int R_Elemento){
            printf("Elemento Não Encontrado.");
      
      }
-
-
-
 
 
 main(){
