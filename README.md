@@ -11,3 +11,11 @@ Some of the algorithms developed:
 * [Struct Exercises 1] - C Structure with examples
 * [File Manipulation] - Using C Language to manipulate files
 * [Manipulation Binary Files] - How can we work using binary files
+* [Manipulation Binary Files] - How can we work using binary files
+* [Reference Pointers] - Adjusting values using pointers
+
+### College project - [Extra Class]
+
+* [Naval Battle Combat] - Building a naval battle for 2 players
+
+
